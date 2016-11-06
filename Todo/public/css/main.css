@@ -1,0 +1,13 @@
+.form-warpper{
+	position: relative;
+}
+.list-group-wp{
+/*	position: absolute;
+	top: 60px;*/
+	width: 100%;
+}
+.delet{
+	float: right;
+	color: #cc0016;
+	cursor: pointer;
+}

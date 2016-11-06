@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}My Site{% endblock %}</title>
+
+    {% block head %}
+        <link rel="stylesheet"  href="css/bootstrap.css">
+        <link rel="stylesheet"  href="css/bootstrap-theme.css">
+        <link rel="stylesheet"  href="css/main.css">
+    {% endblock %}
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="js/reqwest.js"></script>
+<script type="text/javascript" src="js/add.js"></script>
+<script type="text/javascript">
+	(function(){
+				var num=$('.list-group-item');
+				$('#num').text(num.length);
+				$('#send_data').click(function(){
+						var content=$('.form-control').val();
+						//console.log(content);
+						reqwest({
+					    url: '/getData'
+							, method: 'post'
+			  			, data: { item:content }
+						})
+						.then(function(resp){
+							$('.list-group').append('<li class="list-group-item"><span class="deletid">'+resp.id+'</span>.&nbsp;'+resp.content+'<span class="delet">删除</span></li>');
+							$('#num').text(add(num.length));
+					},function(err){
+							console.log(err);
+					})
+
+				})
+				$(document).on('click','.delet',function(){
+					var id=$(this).siblings('.deletid').text();
+					reqwest({
+						url:'/deleData',
+						method:'post',
+						data:{id:id}
+					})
+					$('#num').text(reduce(num.length));
+					$(this).parent('.list-group-item').remove();
+				})
+	})();
+</script>
+</html>

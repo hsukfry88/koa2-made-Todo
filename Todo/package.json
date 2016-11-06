@@ -1,0 +1,39 @@
+{
+  "name": "koapm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "mocha ./test/server_test.js",
+    "unit":"karma start ./test/karma.conf.js",
+    "e2e" :"node ./test/e2e.js",
+    "test" :"npm run e2e && npm run server && npm run unit"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-polyfill": "^6.16.0",
+    "co": "^4.6.0",
+    "co-body": "^4.2.0",
+    "koa": "next",
+    "koa-better-body": "^3.0.2",
+    "koa-bodyparser": "^3.2.0",
+    "koa-convert": "^1.2.0",
+    "koa-json-body": "^5.0.0",
+    "koa-multer": "^1.0.0",
+    "koa-route": "^2.4.2",
+    "koa-router": "^7.0.1",
+    "koa-simple-router": "^0.2.0",
+    "koa-static": "^2.0.0",
+    "koa-swig": "^2.2.0",
+    "mysql-promise": "^3.1.0"
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.3.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "supertest": "^2.0.1"
+  }
+}

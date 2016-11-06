@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block head %}
+	{% parent %}
+{% endblock %}
+{% block content %}
+	<div class="container">
+		
+			<div class="page-header">
+			  <h1>{{title}}</h1>
+			</div>
+
+
+			<div class="form-warpper">
+			  <div class="form-group">
+			    <label  style="display: block;">{{intro}}<span style="float: right;">目前共：<b id="num"></b> 项</span></label>
+			    <input type="text" class="form-control" name="itemInput"  placeholder="{{intro}}">
+			  </div>
+			  <div class="list-group-wp">
+						<ul class="list-group">
+								{% for itme in items %}
+										<li class="list-group-item"><span class="deletid">{{itme.id}}</span>.&nbsp;{{itme.content}}<span class="delet">删除</span></li>
+								{% endfor %}
+						</ul>
+
+			  </div>
+		  </div>
+		  <button id="send_data" type="submit" class="btn btn-default">添加</button>
+	</div>
+{% endblock %}
